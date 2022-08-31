@@ -1,0 +1,61 @@
+<div>
+    <div class="container-games">
+    <div class="order-by">
+        <label for="order-by">Order by:</label>
+        <select id="order-by" (change)="component.orderBy = $event.target.value; component.sortBy();" [value]="component.orderNotSelected ? '' : component.orderBy" >
+            <option value="" [ngClass]="component.orderNotSelected ? ' ' : 'none'">Select order...</option>
+            <option value="rating">Rating</option>
+            <option value="metacritic">Metacritic</option>
+            <option value="playtime">Playtime</option>
+            <option value="suggestions_count">Suggestions</option>
+        </select>
+        <div class="asc-desc">
+            <button [ngClass]="[component.asc ? 'btn-active' : 'btn-inactive', component.orderNotSelected ? 'hiden' : 'visible']" (click)="component.asc = true; component.sortBy();"><fa-icon [icon]="main.angleUp"></fa-icon></button>
+        </div>
+        <div class="asc-desc">
+            <button [ngClass]="[!component.asc ? 'btn-active' : 'btn-inactive', component.orderNotSelected ? 'hiden' : 'visible']" (click)="component.asc = false; component.sortBy();"><fa-icon [icon]="main.angleDown"></fa-icon></button>
+        </div>
+    </div>
+    <div class="games" >
+        <div class="game"  *ngFor="let item of component.games.results"  (click)="component.gameSelected = item; component.getAllGames();" routerLink="/game/{{item.slug}}">
+            <img class="game-image" src="{{item.background_image}}" alt="">
+            <div class="game-description">
+                <div class="platforms-metacritic">
+                    <div class="game-platforms">
+                        <div *ngFor='let platform of item.parent_platforms'>
+                            <div [ngSwitch]="platform.platform.name">
+                                <div *ngSwitchCase="'PC'" >
+                                    <fa-icon [icon]="component.platforms[0].icon"></fa-icon>
+                                </div>
+                                <div *ngSwitchCase="'PlayStation'" >
+                                    <fa-icon [icon]="component.platforms[1].icon"></fa-icon>
+                                </div>
+                                <div *ngSwitchCase="'Xbox'" >
+                                    <fa-icon [icon]="component.platforms[2].icon"></fa-icon>
+                                </div>
+                                <div *ngSwitchCase="'Nintendo'" >
+                                    <fa-icon [icon]="component.platforms[3].icon"></fa-icon>
+                                </div>
+                                <div *ngSwitchCase="'iOS'" >
+                                    <fa-icon [icon]="component.platforms[4].icon"></fa-icon>
+                                </div>
+                                <div *ngSwitchCase="'Android'" >
+                                    <fa-icon [icon]="component.platforms[5].icon"></fa-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="metacritic">{{item.metacritic}}</h3>
+                </div>
+                <h2 class="game-title">{{item.name}}</h2>
+                <h3 class="playtime"><fa-icon [icon]="time"></fa-icon> {{item.playtime}}</h3>
+                <div class="count">
+                    <h4 class="added"><fa-icon [icon]="plus"></fa-icon> {{item.added}}</h4>
+                    <h4 class="rating"><fa-icon [icon]="star"></fa-icon> {{item.rating}}</h4>
+                    <h4 class="like"><fa-icon [icon]="like"></fa-icon> {{item.suggestions_count}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+

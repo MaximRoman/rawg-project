@@ -1,0 +1,24 @@
+<div class="header" [ngClass]="[component.isMenuOpen ? 'f-column' : 'f-row']"  *ngIf="component.gameInfo === false">
+    <a class="logo" [ngClass]="component.isMenuOpen ? 'hiden' : 'visible'" routerLink="/" onClick="window.location.reload()">RAWG</a>
+    <div class="inner-header">
+      <a class="logo-inner" [ngClass]="!component.isMenuOpen ? 'hiden' : 'visible'" routerLink="/" onClick="window.location.reload()">RAWG</a>
+      <div class="burger" (click)="component.toggleMenu()">
+        <fa-icon [icon]="component.menuIcon" class="material-icons"></fa-icon>
+      </div>
+      <div class="menu" [ngClass]="component.isMenuOpen ? 'open' : 'close'">
+        <div class="search" >
+          <label for="search-input"><fa-icon [icon]="component.searchBtn"></fa-icon></label>
+          <input id="search-input" type="text" placeholder="search" (change)="component.searchInput = $event.target.value; component.search();">
+        </div>
+        <nav class="nav-bar">
+          <a class="nav-bar-item" href="#">Log in</a>
+          <a class="nav-bar-item" href="#">Sign up</a>
+          <a class="nav-bar-item" href="#">API</a>
+        </nav>
+      </div>
+    </div>  
+  </div>
+  <app-main *ngIf="component.gameInfo === false"></app-main>
+  <div *ngIf="component.gameInfo === true">
+      <app-game-page></app-game-page>
+  </div>

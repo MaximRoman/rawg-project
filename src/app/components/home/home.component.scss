@@ -1,0 +1,172 @@
+
+.header {
+    min-height: 110px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: grid;
+    grid-template-columns: 0.5fr 3fr;
+    align-items: center;
+    .logo {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 5px;
+    }
+    .inner-header {
+        display: grid;
+        grid-template-columns: 4fr 0.1fr;
+        align-items: center;
+        .logo-inner {
+            display: none;
+        }
+        .menu {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            .search {
+                transition: 0.5s;
+                background-color: #3B3B3B;
+                display: grid;
+                grid-template-columns: 0.2fr 3.9fr;
+                align-items: center;
+                border-radius: 25px;
+                label {
+                    color: #737373;
+                    background: none;
+                    border: none;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-top-left-radius: 25px;
+                    border-bottom-left-radius: 25px;
+                }
+                label:hover {    
+                    cursor: text;
+                }
+                input {
+                    font-size: 18px;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    border: none;
+                    outline: none;
+                    background: none;
+                    border-top-right-radius: 25px;
+                    border-bottom-right-radius: 25px;
+                }
+            }
+            .search:hover,
+            .search:focus-within {
+                transition: 0.5s;
+                background-color: white;
+                label {
+                    color: black;
+                }
+            }
+            .nav-bar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                .nav-bar-item {
+                    text-decoration: none;
+                    color: white;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                }
+                .nav-bar-item:hover {
+                    text-decoration: solid underline white 2px;
+                    text-underline-offset: 6px;
+                }
+            }
+        }
+    }
+    .burger {
+        color: white;
+        display: none;
+    }
+    .burger:hover {
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .header {
+        .inner-header {
+            .menu {
+                .search {
+                    border-radius: 20px;
+                    grid-template-columns: 0.3fr 3.7fr;
+                    label {
+                        border-top-left-radius: 20px;
+                        border-bottom-left-radius: 20px;
+                    }
+                    input {
+                        border-top-right-radius: 20px;
+                        border-bottom-right-radius: 20px;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 800px) {
+    .f-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .burger {
+            display: block;
+        }
+        .inner-header {
+            .menu {
+                display: none;
+            }            
+        }
+    }
+    .f-column {
+        display: grid;
+        grid-template-columns: auto;
+
+        .burger {
+            display: block;
+        }
+        .inner-header {
+            display: grid;
+            grid-template-rows: auto;
+            .logo-inner {
+                display: block;
+                text-decoration: none;
+                color: white;
+                font-size: 18px;
+                font-weight: 800;
+                letter-spacing: 5px;
+            }
+            .close {
+                display: none;
+            }
+            .open {
+                margin-top: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                .nav-bar {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1px;
+                    .nav-bar-item {
+                        background-color: #737373;
+                        border: 1px solid black;
+                        padding: 10px;
+                        width: 100%;
+                        text-align: end;
+                    }
+                }
+            }
+            
+        }
+    }
+}

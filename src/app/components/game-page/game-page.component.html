@@ -1,0 +1,47 @@
+<div class="game-page">
+    <button routerLink="/"><fa-icon [icon]="angleLeft"></fa-icon> Back</button>
+    <div class="game-details">
+        <div class="game-image">
+            <img src="{{component.gameSelected.background_image}}" alt="">
+        </div>
+        <div class="inner-game-details">
+            <div>
+                <h1 class="game-name">{{component.gameSelected.name}}</h1>
+                <div class="details-item">
+                    <h4>Platforms:</h4>
+                    <div class="for">
+                        <div *ngFor="let item of component.gameSelected.parent_platforms">
+                            <h3>{{item.platform.name}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="details-item">
+                    <h4>Genres:</h4>
+                    <div class="for">
+                        <div *ngFor="let item of component.gameSelected.genres">
+                            <h3>{{item.name}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="details-item">
+                    <div class="for">
+                        <h3 class="playtime"><fa-icon [icon]="time"></fa-icon> {{component.gameSelected.playtime}}</h3>
+                        <h4 class="added"><fa-icon [icon]="plus"></fa-icon> {{component.gameSelected.added}}</h4>
+                        <h4 class="rating"><fa-icon [icon]="star"></fa-icon> {{component.gameSelected.rating}}</h4>
+                        <h4 class="like"><fa-icon [icon]="like"></fa-icon> {{component.gameSelected.suggestions_count}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="game-screenshoots">
+        <h1>Screenshoots:</h1>
+        <div class="screenshoots">
+            <div *ngFor="let item of component.gameSelected.short_screenshots.slice(1) ">
+                <img src="{{item.image}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="main"  *ngIf="component.gameInfo === false">
+    <div class="side-bar">
+        <a routerLink="/" onclick="window.location.reload()"><h1>All Games</h1></a>
+        <div>
+            <h1>Platforms:</h1>
+            <div class="platforms" *ngFor="let item of component.platforms let idx = index">
+                <div class="platforms-item" *ngIf="idx < 3 || platformsShowAll" (click)="component.filterByPlatform(item.name)">
+                    <fa-icon [icon]="item.icon"></fa-icon>
+                    {{item.name}}
+                </div>
+            </div>
+            <div class="angle-btn">
+                <fa-icon [icon]="anglePlatforms" class="angleDown ms-1 rounded "></fa-icon>
+                <a (click)="showAllPlatforms()"><h4>{{platformsShowAll ? 'Hide' : 'Show all'}}</h4></a>
+            </div>
+        </div>
+        <div>
+            <h1>Genres:</h1>
+            <div class="genres" *ngFor="let item of component.genres.results let idx = index">                
+                <div class="genre" *ngIf="idx < 3 || genresShowAll" (click)="component.filterByGenres(item.name)">
+                    <img class="item-image" src="{{item.image_background}}" alt="">
+                    <div class="genre-name">
+                        {{item.name}}
+                    </div>
+                </div>
+            </div>
+            <div class="angle-btn">
+                <fa-icon [icon]="angleGenders" class="angleDown ms-1 rounded "></fa-icon>
+                <a (click)="showAllGenders()"><h4>{{genresShowAll ? 'Hide' : 'Show all'}}</h4></a>
+            </div>
+        </div>
+    </div>
+    <app-games></app-games>
+</div>
