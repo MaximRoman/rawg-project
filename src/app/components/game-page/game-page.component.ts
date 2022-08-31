@@ -27,6 +27,7 @@ export class GamePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.game = this.component.games.results.filter((item:any) => item.slug === this.gameSlug);
+    window.scroll(0,0);
   }
 
 }
