@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
 
   search() { 
     this.getAllGames();
-    this.games.results = this.games.results.filter((item:any) => item.name.toLowerCase().includes(this.searchInput));
+    this.games.results = this.games.results.filter((item:any) => item.name.toLowerCase().includes(this.searchInput.toLowerCase()));
     this.searchInput = "";
     this.sortBy();
   }
